@@ -51,5 +51,3 @@ def test():
     c = merge_sort(c, 0 , 6)
     expected = [1, 1, 2, 2, 4, 10]
     assert c == expected
-
-test()
