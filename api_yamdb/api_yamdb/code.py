@@ -1,14 +1,7 @@
 def merge(arr, lf, mid, rg):
     len_arr = len(arr)
-    lf = 0
-    rg = len_arr
-    mid = rg//2
-    print(len_arr,lf, mid, rg)
-    if len_arr == 1:
-        return arr
-
-    left = merge(arr[:mid], lf, mid, mid)
-    right = merge(arr[mid:], mid, (rg-mid)//2+mid, rg)
+    left = arr[:mid]
+    right = arr[mid:]
     len_left = len(left)
     len_right = len(right)
     l,r,k = 0, 0, 0
@@ -34,18 +27,28 @@ def merge(arr, lf, mid, rg):
 
 
 def merge_sort(arr, lf, rg):
-    # Your code
-    # “ヽ(´▽｀)ノ”
-    pass
+    len_arr = len(arr)
+    rg = len_arr
+    mid = rg//2
+    if len_arr == 1:
+        return arr
+
+    left = merge_sort(arr[:mid], lf, mid)
+    right = merge_sort(arr[mid:], 0, rg)
+    len_left = len(left)
+    len_right = len(right)
+    left_right = left+right
+    len_lr = len(left_right)
+    return merge(left_right,0,len_lr//2, len_lr)
+
 
 def test():
     a = [1, 4, 9, 2, 10, 11]
     b = merge(a, 0, 3, 6)
     expected = [1, 2, 4, 9, 10, 11]
-    print(b)
     assert b == expected
     c = [1, 4, 2, 10, 1, 2]
-    merge_sort(c, 0 , 6)
+    c = merge_sort(c, 0 , 6)
     expected = [1, 1, 2, 2, 4, 10]
     assert c == expected
 
