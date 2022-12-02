@@ -39,15 +39,9 @@ def merge_sort(arr, lf, rg):
     len_right = len(right)
     left_right = left+right
     len_lr = len(left_right)
-    return merge(left_right,0,len_lr//2, len_lr)
+    if len_arr == len(Array):
+        for i in range(len_arr):
+            Array[i] = arr[i]
+    else:
+        return merge(left_right,0,len_lr//2, len_lr)
 
-
-def test():
-    a = [1, 4, 9, 2, 10, 11]
-    b = merge(a, 0, 3, 6)
-    expected = [1, 2, 4, 9, 10, 11]
-    assert b == expected
-    c = [1, 4, 2, 10, 1, 2]
-    c = merge_sort(c, 0 , 6)
-    expected = [1, 1, 2, 2, 4, 10]
-    assert c == expected
