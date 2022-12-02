@@ -27,6 +27,7 @@ def merge(arr, lf, mid, rg):
 
 
 def merge_sort(arr, lf, rg):
+    global Array
     len_arr = len(arr)
     rg = len_arr
     mid = rg//2
